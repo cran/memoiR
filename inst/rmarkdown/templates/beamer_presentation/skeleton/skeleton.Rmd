@@ -1,0 +1,182 @@
+---
+title: "Title of the Talk"
+author: "Author's name"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+url: https://GitHubID.github.io/Repository/
+github-repo: GitHubID/Repository
+bibliography: references.bib
+biblio-style: chicago
+output:
+  bookdown::beamer_presentation2:
+    latex_engine: xelatex
+    includes:
+      in_header: latex/header.tex
+    citation_package: natbib
+    slide_level: 2
+    df_print: kable
+    number_sections: no
+    toc: no
+    fig_caption: no
+    keep_tex: no
+  bookdown::slidy_presentation2:
+    slide_level: 2
+  bookdown::ioslides_presentation2:
+    logo: images/logo.png
+    widescreen: true
+  bookdown::powerpoint_presentation2:
+    slide_level: 2
+---
+
+```{r DoNotModify, include=FALSE}
+### Utilities. Do not modify.
+# Installation of packages if necessary
+InstallPackages <- function(Packages) {
+  InstallPackage <- function(Package) {
+    if (!Package %in% installed.packages()[, 1]) {
+      install.packages(Package, repos="https://cran.rstudio.com/")
+    }
+  }
+  invisible(sapply(Packages, InstallPackage))
+}
+
+# Basic packages
+InstallPackages(c("bookdown", "formatR", "kableExtra", "ragg"))
+
+# kableExtra must be loaded 
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
+  # Word output (https://stackoverflow.com/questions/35144130/in-knitr-how-can-i-test-for-if-the-output-will-be-pdf-or-word)
+  # Do not use autoformat (https://github.com/haozhu233/kableExtra/issues/308)
+  options(kableExtra.auto_format = FALSE)
+}
+library("kableExtra")
+
+# Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r Options, include=FALSE}
+### Customized options for this document
+# Add necessary packages here
+Packages <- c("tidyverse")
+# Install them
+InstallPackages(Packages)
+
+# knitr options
+knitr::opts_chunk$set(
+  cache=FALSE, # Cache chunk results
+  echo = FALSE, # Show/Hide R chunks
+  warning=FALSE, # Show/Hide warnings
+  # Figure alignment and size
+  fig.align='center', out.width='80%',
+  # Graphic device
+  dev = "ragg_png",
+  # Code chunk format
+  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
+  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  )
+options(width=50)
+
+# ggplot style
+library("tidyverse")
+theme_set(theme_bw())
+theme_update(panel.background=element_rect(fill="transparent", colour=NA),
+             plot.background=element_rect(fill="transparent", colour=NA))
+knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+
+# Tibbles: 5 lines, fit to slide width
+options(tibble.print_min = 5, tibble.width = 50)
+
+# Random seed
+set.seed(973)
+```
+
+
+# Introduction
+
+## R Markdown
+
+This is an R Markdown presentation. 
+Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. 
+For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.
+
+## Beamer Presentation Template
+
+This template has the same features as others in the **memoiR** package except for
+multi-language support (no `lang` item in the header).
+
+See the code of the following slides for some specific code of slides.
+
+
+# Advanced code
+
+## Slide with Incremental Bullets
+
+Incremental bullets start with `> -` instead of `-`:
+
+> - Bullet 1
+> - A reference: @Xie2016.
+> - Bullet 3
+
+## Slide with R Output
+
+R code chunks are displayed as follows:
+
+```{r cars, echo = TRUE}
+head(cars)
+```
+
+## Slide with a Centered Plot{.flexbox .vcenter}
+
+```{r pressure}
+plot(pressure)
+```
+
+## Two Column Layout{.columns-2} 
+
+\begincols
+  \begincol{.48\textwidth}
+
+This slide has two columns.
+
+In Beamer, each column in between `\begincol` and `\endcol`.
+
+In HTML, the `{.columns-2}` option is added to the slide title and `<p class="forceBreak"></p>` allows forcing column break.
+
+
+  \endcol
+  \begincol{.48\textwidth}
+  <p class="forceBreak"></p>
+
+```{r pressure2, out.width='90%'}
+plot(pressure)
+```
+
+  \endcol
+\endcols
+
+## Documentation
+
+See [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html) for full documentation about HTML slides.
+
+Note:
+
+- `{.flexbox .vcenter}` to center the HTML slide with plot.
+- `out.width='90%'` to reduce the size of the plot in the Two Column Layout slide.
+
+Keep the code below to have a slide for references, allow two-column slides in _ioslides_ (but not in _Slidy_) and allow scrolling oversized slides.
+
+<!-- A slide for references --> 
+`r if (!knitr:::is_latex_output()) '## References {.smaller}'`
+<!-- Styles for HTML slides -->
+<!-- https://stackoverflow.com/questions/38260799/references-page-truncated-in-rmarkdown-ioslides-presentation/38294541#38294541 -->
+<style>
+  .forceBreak { -webkit-column-break-after: always; break-after: column; }
+  slides > slide { overflow: scroll; }
+  slides > slide:not(.nobackground):after { content: ''; }
+</style>

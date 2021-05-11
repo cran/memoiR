@@ -1,0 +1,383 @@
+---
+title: "Title of the Article"
+author:
+  - name: "First Author's name"
+  - name: "Second Author's name"
+abstract: >
+  Abstract of the article.
+date: "`r format(Sys.time(), '%d %B %Y')`"
+url: https://GitHubID.github.io/Repository/
+github-repo: GitHubID/Repository
+lang: en-US
+otherlangs: [fr-FR,it]
+bibliography: references.bib
+biblio-style: chicago
+pdftoc: no
+preamble: >
+  \hyphenation{bio-di-ver-si-ty sap-lings}
+always_allow_html: yes
+output:
+  bookdown::pdf_book:
+    template: latex/template.tex
+    citation_package: natbib
+    latex_engine: xelatex
+    keep_tex: yes
+  rmdformats::downcute:
+    use_bookdown: yes
+    lightbox: yes
+  bookdown::word_document2: default
+  bookdown::gitbook:
+    config:
+      download: "pdf"
+      sharing:
+        github: yes
+  bookdown::html_document2:
+    toc: yes
+    toc_float: yes
+---
+
+```{r DoNotModify, include=FALSE}
+### Utilities. Do not modify.
+# Installation of packages if necessary
+InstallPackages <- function(Packages) {
+  InstallPackage <- function(Package) {
+    if (!Package %in% installed.packages()[, 1]) {
+      install.packages(Package, repos="https://cran.rstudio.com/")
+    }
+  }
+  invisible(sapply(Packages, InstallPackage))
+}
+
+# Basic packages
+InstallPackages(c("bookdown", "formatR", "kableExtra", "ragg"))
+
+# kableExtra must be loaded 
+if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
+  # Word output (https://stackoverflow.com/questions/35144130/in-knitr-how-can-i-test-for-if-the-output-will-be-pdf-or-word)
+  # Do not use autoformat (https://github.com/haozhu233/kableExtra/issues/308)
+  options(kableExtra.auto_format = FALSE)
+}
+library("kableExtra")
+
+# Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r Options, include=FALSE}
+### Customized options for this document
+# Add necessary packages here
+Packages <- c("tidyverse")
+# Install them
+InstallPackages(Packages)
+
+# knitr options
+knitr::opts_chunk$set(
+  cache=FALSE, # Cache chunk results
+  echo = TRUE, # Show/Hide R chunks
+  warning=FALSE, # Show/Hide warnings
+  # Figure alignment and size
+  fig.align='center', out.width='80%',
+  # Graphic device
+  dev = "ragg_png",
+  # Code chunk format
+  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
+  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  )
+options(width=50)
+
+# ggplot style
+library("tidyverse")
+theme_set(theme_bw())
+theme_update(panel.background=element_rect(fill="transparent", colour=NA),
+             plot.background=element_rect(fill="transparent", colour=NA))
+knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+
+# Random seed
+set.seed(973)
+```
+
+# Introduction
+
+This template allows writing articles in Markdown[^1] format.
+
+[^1]: <https://ericmarcon.github.io/travailleR/chap-rediger.html>
+
+
+# R Markdown{#markdown}
+
+Markdown is a very simple language for producing various types of documents: HTML, PDF, and Word among others.
+Its documentation is available at the RStudio website[^2].
+
+[^2]: <http://rmarkdown.rstudio.com/articles.html>
+
+
+Markdown is extended by Bookdown[^3], which allows for book writing and more efficient syntax for articles.
+This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LateX compiles it into PDF.
+
+[^3]: <https://bookdown.org/yihui/bookdown/>
+
+
+## Motivation
+
+Markdown is very easy to learn.
+
+Markdown allows you to integrate your R code for a *reproducible* result.
+
+Markdown allows to produce, without rewriting the text, a document in different formats: HTML, LaTeX or Word for example.
+
+
+## How to do it
+
+In RStudio, create a new document of type Document R Markdown. 
+The wizard allows you to choose between different formats.
+
+Click on _From template_: from templates installed by packages. 
+The memoiR package templates are displayed: choose *Simple Article*.
+
+It is better to create an RStudio project to benefit from all the possibilities: _File_ / _New Project_ then use the wizard to create a project from an existing folder.
+
+Write the document in RStudio.
+
+Clicking the **Knit** button in RStudio generates the document in the requested format.
+
+
+
+# Code
+
+The main features of Markdown are summarized here.
+
+
+## R code
+
+R code is included in code chunks:
+
+```{r cars, echo = TRUE}
+head(cars)
+```
+
+
+## Tables
+
+The horizontal `-` and vertical separators `|` allow you to draw a table according to Markdown syntax, but this is not the best method.
+
+Tables can also be produced by R code.
+The content of the table is in a dataframe.
+The `kable()` function in the _knitr_ package prepares the table for display and passes the result to the `kable_styling` function in the _kableExtra_ package for final formatting.
+
+```{r kable, echo=FALSE, warning=FALSE}
+names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
+knitr::kable(head(iris), caption="Table created by R", longtable = TRUE, booktabs = TRUE) %>%
+kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
+```
+
+The caption is specified by the `caption` argument and referencing is possible because the table receives a label whose name is `tab:` followed by the name of the code snippet (table \@ref(tab:kable)).
+Always use the `booktabs = TRUE` argument so that the thickness of the separator lines is optimal in LaTeX.
+The `bootstrap_options = "striped"` option provides more readable tables in HTML.
+
+In LaTeX, tables can have the width of the column and possibly span multiple pages, or use the width of the page, like table \@ref(tab:Paracou)).
+
+(ref:Paracou) Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+```{r Paracou, echo=FALSE, warning=FALSE}
+Intervention <- data.frame(
+  Treatment=c("Control", "T1", "T2", "T3"),
+  Timber=c("", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
+  Thinning=c("", 
+             "", 
+             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
+             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
+  Fuelwood=c("", 
+             "", 
+             "", 
+             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
+  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
+)
+names(Intervention)[5] <- "\\%AGB lost"
+knitr::kable(Intervention, caption="(ref:Paracou)", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE)
+```
+
+This table contains mathematics: the `escape = FALSE` option is necessary.
+
+Finally, the `full_width = FALSE` option adjusts the width of the table to its content instead of occupying all the available width.
+It must be `TRUE` for correct formatting of two-column tables in LaTeX.
+
+
+## Figures
+
+```{r pressure, fig.cap="Figure title"}
+plot(pressure)
+```
+
+Figures can be created by the R code (figure \@ref(fig:pressure)).
+With Bookdown, a label is associated with each figure: its name is `fig:xxx` where `xxx` is the name of the R code snippet.
+Cross-references are made with the command `\@ref(fig:xxx)`.
+
+A figure can use the full width of the page by adding the following options to the header of the code snippet that generates it: `fig.env="figure*"` and `out.extra=""`.
+
+Existing figures are integrated into a piece of code by the `include_graphics` function, see figure \@ref(fig:logo).
+
+```{r logo, fig.cap="A figure from a file", echo=FALSE}
+knitr::include_graphics("images/logo.png")
+```
+
+Systematically place these files in the `images` folder for the automation of GitHub pages.
+
+
+## Captions
+
+Figure and table captions can be long, include formatted text, maths, references...
+The only limit is they cannot contain more than a single paragraph.
+Such captions must be stored in a separate paragraph starting with `(ref:ChunkName)`and a space.
+The text of the caption follows.
+
+In the figure chunk heading, the caption is called in the `fig.cap` field:
+
+  {r ChunkName, fig.cap="(ref:ChunkName)"}
+
+In tables, the `caption` argument of the `kable()` function is used the same way.
+
+
+## Lists
+
+Lists are indicated by `*`, `+` and `-` (three hierarchical levels) or numbers `1.`, `i.` and `A.` (numbered lists).
+Indentation of lists indicates their level: `*`, `+` and `-` may be replaced by `-` at all levels, but four spaces are needed to nest a list into another.
+
+* First element of a list
+    + sub-list
+* Second element
+* Continuation of the list
+
+Leave an empty line before and after the list, but not between its items.
+
+
+## Math
+
+Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ or isolated like $$e^{i \pi} = -1$$.
+
+They can be numbered, see equation \@ref(eq:disk), using the `equation` environment:
+
+\begin{equation}
+  A = \pi r^2.
+  (\#eq:disk)
+\end{equation}
+
+
+## Cross-references
+
+Figures and tables have an automatically generated label, identical to the name of the code snippet prefixed with `fig:` and `tab:`.
+
+For equations, the label is added manually by the code `(\#eq:xxx)` before the end of the equation.
+
+Sections can be tagged by ending their title with `{#yyy}`.
+
+Bookmarks can also be placed freely in the text with the command `(ref:zzz)`.
+
+In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
+
+
+## Bibliography
+
+Bibliographic references included in the `references.bib` file can be called by `[@CitationKey]`, in parentheses [@Xie2016], or without square brackets, in the text, as @Xie2018 .
+
+
+The bibliography is processed by Pandoc when producing Word or HTML documents.
+The bibliographic style can be specified, by adding the line 
+
+    csl:file_name.csl
+    
+in the document header and copying the _.csl_ style file to the project folder.
+More than a thousand styles are available[^4].
+
+[^4]: <https://github.com/citation-style-language/styles>
+
+For PDF documents, the bibliography is managed by natbib.
+The style is declared in the header:
+
+    biblio-style: chicago
+
+It can be changed as long as the appropriate `.bst` file (by default: `chicago.bst`) is included in the project. 
+
+
+## LaTeX preamble
+
+LaTeX commands can be added in the preamble of the produced LaTeX file, for example to load additional packages.
+These commands are in the `preamble:` section of the Markdown file header.
+
+The default commands allow to show the use of the hyphenation command:
+```
+\hyphenation%
+  {bio-di-ver-si-ty sap-lings}
+```
+
+Other commands can be added as needed.
+Warning:
+
+- Comments are not allowed
+- Complex commands (such as `\renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
+
+
+## Forcing line breaks
+
+Hyphenation is handled automatically in LaTeX.
+If a word is not hyphenated correctly, add its hyphenation in the preamble of the file with the command `hyphenation` (words are separated by spaces, hyphenation locations are represented by dashes).
+
+If LaTeX can't find a solution for the line break, for example because some code is too long a non-breaking block, add the LaTeX command `\break` to the line break location.
+Do not leave a space before the command. 
+The HTML document ignores LaTeX commands.
+
+
+## Languages
+
+Languages are declared in the document header.
+
+The main language of the document (`lang`) changes the name of some elements, such as the table of contents.
+The change of language in the document (one of `otherlangs`) is managed in LaTeX but not in HTML by inserting on a new line the following command: 
+```
+\selectlanguage{english}
+```
+
+The current language has an effect only in LaTeX output: a space is added before double punctuation in French, the size of spaces is larger at the beginning of sentences in English, etc.
+The `\selectlanguage` command is simply ignored in HTML.
+
+Language codes are used in the header, such as `en-US` but language names are necessary in `\selectlanguage{}`.
+Name matches are listed in table 3 of the polyglossia package documentation[^5].
+
+[^5]: http://mirrors.ctan.org/macros/unicodetex/latex/polyglossia/polyglossia.pdf
+
+
+# Document types
+
+This template is designed to work with the Simple Article template in LaTeX and produce documents in PDF, HTML or Word format.
+Use the list of choices in the _Knit_ button to choose the output format.
+
+## PDF Document
+
+The document is formatted according to the article LaTeX template.
+
+## HTML document
+
+The GitBook template is optimized for on-screen reading.
+While writing, prefer knitting to HTML format for its speed of execution.
+A download button is available in the document menu bar: it will work if the document is also knitted in PDF format and if the file name is entered in the download field of the YAML header.
+
+The HMTL Document and all formats from the **rmdformats** packages are other possibilities.
+
+## Word document
+
+Its content can be formatted or copied into a template. 
+The standard text styles are "First Paragraph" and "Body Text".
+
+The advantage of the Word format is to produce a manuscript for journals that do not support LaTeX.
+The bibliographic style of the journal is most likely available in _.csl_ format, which minimizes manual preparation.
+
+The last line of this template (R code snippet) must be kept to display the title _References_ (to be translated into the document language if necessary) in HTML format.
+The level 1 title _References_ must be added manually to Word files.
+
+`r if (!knitr:::is_latex_output()) '# References {-}'`
