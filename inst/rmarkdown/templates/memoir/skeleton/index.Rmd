@@ -13,7 +13,7 @@ maintitlepage:
     \begin{itemize}
       \item \LaTeX and its class memoir (\url{http://www.ctan.org/pkg/memoir}).
       \item R (\url{http://www.r-project.org/}) and RStudio (\url{http://www.rstudio.com/})
-      \item bookdown (\url{http://bookdown.org/})
+      \item bookdown (\url{http://bookdown.org/}) and memoiR (\url{https://ericmarcon.github.io/memoiR/})
     \end{itemize}
   credits: |
     Name of the owner of the logo
@@ -27,17 +27,47 @@ pdftitlepage: images/cover.pdf
 # Language
 lang: en-US
 otherlangs: [fr-FR,it]
+# LaTeX
+documentclass: memoir
+classoption:
+  - extrafontsizes
+  - onecolumn
+  - openright
 # Paper, font
 papersize: A4
-fontsize: 11pt
+fontsize: 12pt
+# Fonts installed by a package. LaTeX tex-gyre package must be installed for:
+# mainfont: texgyretermes          # Times New Roman for the text
+mainfontoptions:
+  - Extension=.otf
+  - UprightFont=*-regular
+  - BoldFont=*-bold
+  - BoldItalicFont=*-bolditalic
+# mathfont: texgyretermes-math.otf # Times New Roman for equations
+# memoir Style
+MemoirChapStyle: daleif1           # or companion with large margins
+MemoirPageStyle: Ruled             # or companion with large margins
+# Margins
+largemargins: false                # or true for large margins
+smallmargin: 1.5in                 # outer margin (small).
+largemargin: 3in                   # outer margin (large)
+marginnote:  1.8in                 # note width in large margin
+spinemargin: 1.5in                 # spine margin. Reduce to 1.2 with large margins.
+uppermargin: 1.5in                 # upper margin
+lowermargin: 1in                   # lower margin
 # Table of contents
-toc-depth: 3
+toc-depth: 2
+# Section numbering
+secnum-depth: section
+# List of tables / Figures
+lot: false
+lof: true
 # Bibliography
 bibliography: references.bib
 biblatexoptions:
   - backend=biber
-  - style=verbose-inote
-  - pageref=true
+  - style=authoryear-ibid  # or verbose-inote with large margins
+# - pageref=true           # uncomment for verbose-inotes style
   - isbn=false
   - backref=true
   - giveninits=true
@@ -62,22 +92,17 @@ backcover:
     keywordlabel: Keywords
 backcoverfontsize: normalsize
 # Figure cropping may be set to no if ghostscript is not installed
-fig_crop: yes
+fig_crop: true
 # Do not modify
-documentclass: memoir
-classoption:
-  - extrafontsizes
-  - onecolumn
-  - openright
 site: bookdown::bookdown_site
-always_allow_html: yes
-graphics: yes
-link-citations: yes
-colorlinks: yes
+always_allow_html: true
+graphics: true
+link-citations: true
+colorlinks: true
 ---
 
 <!-- HTML code necessary for key messages --> 
-<img src="images/key_message.png" alt="image" hidden/>
+<img src="images/trombone.png" alt="image" hidden/>
 
 ```{r DoNotModify, include=FALSE}
 ### Utilities. Do not modify.
@@ -108,6 +133,10 @@ knitr::knit_hooks$set(chunk = function(x, options) {
   x <- def.chunk.hook(x, options)
   ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
 })
+
+# Figures with side captions
+if (rmarkdown::metadata$largemargins)
+  knitr::opts_chunk$set(fig.env='SCfigure')
 ```
 
 ```{r Options, include=FALSE}
@@ -124,17 +153,15 @@ knitr::opts_chunk$set(
   cache=FALSE, # Cache chunk results
   echo = TRUE, # Show/Hide R chunks
   warning=FALSE, # Show/Hide warnings
-  # Books only: figures with side captions
-  fig.env='SCfigure', fig.asp=.75,
   # Figure alignment and size
-  fig.align='center', out.width='80%',
-  # Graphic device
-  dev = "ragg_png",
+  fig.align='center', out.width='80%', fig.asp=.75,
+  # Graphic devices (ragg_png is better than standard png)
+  dev = c("ragg_png", "pdf"),
   # Code chunk format
-  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
+  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=60),
   size="scriptsize", knitr.graphics.auto_pdf = TRUE
   )
-options(width=50)
+options(width=60)
 
 # ggplot style
 library("tidyverse")

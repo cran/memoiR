@@ -2,7 +2,9 @@
 
 ![stability-wip](https://img.shields.io/badge/lifecycle-maturing-blue.svg)
 ![R-CMD-check](https://github.com/EricMarcon/memoiR/workflows/R-CMD-check/badge.svg)
-[![codecov](https://codecov.io/github/EricMarcon/memoiR/branch/master/graphs/badge.svg)](https://codecov.io/github/EricMarcon/memoiR) 
+[![codecov](https://codecov.io/github/EricMarcon/memoiR/branch/master/graphs/badge.svg)](https://codecov.io/github/EricMarcon/memoiR)
+[![CRAN version](http://www.r-pkg.org/badges/version/memoiR)](https://CRAN.r-project.org/package=memoiR)
+[![](http://cranlogs.r-pkg.org/badges/memoiR)](https://CRAN.R-project.org/package=memoiR)
 
 
 Templates to publish well-formatted documents both in HTML and PDF formats.
@@ -11,7 +13,8 @@ Gallery:
 
 - Memoir:
     - [HTML GitBook](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_gitbook/index.html)
-    - [PDF](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf)
+    - [PDF, small-margin layout](https://ericmarcon.github.io/memoiR/gallery/memoir/bookdown_pdf_book/MyBook.pdf)
+    - [PDF, wide-margin layout](https://ericmarcon.github.io/travailleR/travailleR.pdf)
 - Simple article: 
     - [HTML Document](https://ericmarcon.github.io/memoiR/gallery/simple_article/bookdown_html_document2/simple_article.html)
     - [Downcute HTML](https://ericmarcon.github.io/memoiR/gallery/simple_article/rmdformats_downcute/simple_article.html)

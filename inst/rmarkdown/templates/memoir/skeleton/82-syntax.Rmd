@@ -20,15 +20,27 @@ The `index.Rmd` file is special: it contains the document header and the first c
 
 Each other file starts with a top-level title:
 
-    # Title of the Chapter
-    
+```
+# Title of the Chapter
+```
+
 If the document is made of parts containing chapters, the file with the fist chapter of each part must start with:
 
-    # (PART) Title of the Part {-}
-    
-    # Title of the Chapter
+```
+# (PART) Title of the Part {-}
+  
+# Title of the Chapter
+```
 
 Note the `{-}` instruction after the title of the part to avoid having it numbered.
+
+Appendices are introduced as a special part:
+
+```
+# (APPENDIX) Appendix {-} 
+
+# Title of the first appendix
+```
 
 
 ## Write
@@ -86,7 +98,7 @@ When it is `TRUE`, the code is printed as follow
 
 ## Figures
 
-```{r pressure, fig.cap="Figure title"}
+```{r pressure, fig.cap="A full width figure", out.width="\\widthw"}
 plot(pressure)
 ```
 
@@ -97,12 +109,17 @@ References are made with the command `\@ref(fig:xxx)`.
 The header of the code snippet of the figure \@ref(fig:pressure) is:
 
 ````
-```{r pressure, fig.cap="Title of the figure"}`r ''`
+```{r pressure, fig.cap="Title of the figure, out.width="\\widthw"}`r ''`
 ```
 ````
 
-It contains at least the name of the figure and its caption. 
-If the caption is long, the header is not very readable.
+It contains at least the name of the figure and its caption.
+
+The default width of figures is set in the option chunk in `index.Rmd`.
+It is `out.width='80%'` in this template, i.e. 80% of the width of the text.
+If a full-width figure is needed, including the margin width, use `out.width="\\widthw"` in its code snippet.
+
+If the caption is long, the header is not easy to read.
 Also, the caption is limited to simple text.
 For more elaborate captions, it is possible to declare the caption in a separate paragraph that begins with the text `(ref:FigureName)`. 
 The figure \@ref(fig:pressure2) benefits from an improved caption.
@@ -114,6 +131,7 @@ plot(pressure)
 
 The text in `fig.cap`, "Title of figure" previously, is replaced by `(ref:pressure)` _within the quotation marks_ and the caption is entered in a paragraph starting with `(ref:pressure)` followed by a space.
 Captions are limited to a single paragraph.
+They should not contain bibliographic references or references to the figures may not find them: if necessary, cite the source of a figure in the text.
 
 Figures that are not created by R but come from files are embedded in a piece of code by the `include_graphics()` function whose argument is the file containing the image to be displayed.
 Always place these files in the `images` folder for good organization.
@@ -130,7 +148,7 @@ The `kable` function in the _knitr_ package prepares the table for display and p
 ```{r kable, echo=TRUE, warning=FALSE}
 library("tidyverse")
 names(iris) <- c("Sepal length ($l_s$)", "Width", "Petal length", "Width", "Species")
-knitr::kable(head(iris), caption="Table created by R", longtable = TRUE, booktabs = TRUE, escape = FALSE) %>%
+knitr::kable(head(iris), caption="Table created by R", booktabs = TRUE, escape = FALSE) %>%
 kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
@@ -209,7 +227,7 @@ Do not leave a space before the command.
 The HTML document ignores LaTeX commands.
 
 
-## Languages
+## Languages {#sec:languages}
 
 Languages are declared in the document header.
 
@@ -239,19 +257,21 @@ Some text for this block.
 ```
 ````
 
-Its heading text is set in the preamble: 
+Its heading text is set in the header of `index.Rmd`: 
 
     chaptersummary: In a Nutshell
 
 
-## User documentation
+## Documentation
+
+### User documentation
 
 - The book [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) by Yihui Xie, the author of **bookdown** and **knitr**. 
 All the necessary details for writing (writing equations, cross-references, etc.) are given.
 - The [R Markdown cheat sheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) for the syntax.
 
 
-## Documentation for developers
+### Documentation for developers
 
 - [LaTeX file format customization](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization).
 - The [Pandoc manual](https://pandoc.org/MANUAL.html) for possible options in the YAML header.
