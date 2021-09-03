@@ -1,9 +1,9 @@
-cc8b0f75ce0e768b330aa23f960f6755 *DESCRIPTION
+5bc364f2bbc00b1f60ec4df7729b8efe *DESCRIPTION
 eba6fead346249b35387ef39d51f1493 *NAMESPACE
-cbd07ecf394226fd98a63682b00566bc *NEWS.md
-c84c026f6ab81f4f00c63c2b5e8ba39a *R/memoiR.R
-4ec4906065d55f08df56704e7908dbd7 *README.md
-ec6fd133492601a85ea22b4650bdef8d *build/vignette.rds
+d46184c6df8bb7fff987f18975e0f944 *NEWS.md
+d8785fbcfe44eafc931429e968a2b209 *R/memoiR.R
+562cf3942e67dd5b437d510933ad0c25 *README.md
+ddb8b1fa3b6e0d8b424cc7196fa3f3a0 *build/vignette.rds
 f84b508d6dc5c69d693e25241b3076fc *inst/doc/memoiR.Rmd
 1bbb059076e99ac066f033f9252b347e *inst/doc/memoiR.html
 976cc5b1ec4172e55b5bf4252c433cac *inst/rmarkdown/templates/beamer_presentation/skeleton/chicago.bst
@@ -52,8 +52,8 @@ f886a3ffcb01f87a4cb763e9f46ce17f *inst/rmarkdown/templates/stylish_article/skele
 91b488cde802d2e6304241daef2d64de *inst/rstudio/templates/project/feather.png
 b05b115660e34e9efecb292692cb1db3 *inst/rstudio/templates/project/memoir.dcf
 f039952c88614dc9a6cec1c8528472fb *man/Knit.Rd
-e7334cc4520e8d9fb8186b4308f22943 *man/add_font.Rd
-7b0fc1a070142044305a111040887f5e *man/add_hyphen.Rd
+1972dd8dc6c2b37cd5f2db35d26d8e0e *man/add_font.Rd
+4db81f6b2a42cd705c4975270be15012 *man/add_hyphen.Rd
 1fe1d9c9e5dfdfde8fa9c65bb2cd7434 *man/build_ghworkflow.Rd
 93a741ac12c27a77e6144728bd3f986a *man/build_githubpages.Rd
 05ae5c26cadd17a34aed435092106c46 *man/build_gitignore.Rd
@@ -63,6 +63,6 @@ bc6a3c15b31a8ca72f31c2aeb99aaf1a *man/figures/logo.png
 b7bdf39888e31760bd1f4bd0a46179e6 *man/figures/logo.svg
 9cd0bb448d636827b4f34b969404c265 *man/memoiR.Rd
 1b68f1d6c681a6b87f6e2019e596355b *tests/testthat.R
-c00f8a571eeac4af967aca7d07280753 *tests/testthat/test_build.R
+99eaa64144a26141e830b2169d9b98c7 *tests/testthat/test_build.R
 685a57f6dc1d860efb675daa599e3d72 *tests/testthat/test_knit.R
 f84b508d6dc5c69d693e25241b3076fc *vignettes/memoiR.Rmd
