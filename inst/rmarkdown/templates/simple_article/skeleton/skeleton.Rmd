@@ -8,13 +8,20 @@ abstract: >
 date: "`r format(Sys.time(), '%d %B %Y')`"
 url: https://GitHubID.github.io/Repository/
 github-repo: GitHubID/Repository
+# Language
 lang: en-US
 otherlangs: [fr-FR,it]
+# Bibliography
 bibliography: references.bib
 biblio-style: chicago
-pdftoc: no
+# LaTeX
 preamble: >
   \hyphenation{bio-di-ver-si-ty sap-lings}
+# Print table of contents in PDFs?
+pdftoc: false
+# If true, choose its depth
+toc-depth: 3
+# Do not modify
 always_allow_html: yes
 output:
   bookdown::pdf_book:
@@ -79,6 +86,7 @@ knitr::opts_chunk$set(
   cache=FALSE, # Cache chunk results
   echo = TRUE, # Show/Hide R chunks
   warning=FALSE, # Show/Hide warnings
+  messages=FALSE, # Show/Hide messages
   # Figure alignment and size
   fig.align='center', out.width='80%',
   # Graphic devices (ragg_png is better than standard png)
@@ -223,7 +231,7 @@ A figure can use the full width of the page by adding the following options to t
 
 Existing figures are integrated into a piece of code by the `include_graphics` function, see figure \@ref(fig:logo).
 
-```{r logo, fig.cap="A figure from a file", echo=FALSE}
+```{r logo, fig.cap="A figure from a file", echo=FALSE, out.width='60%'}
 knitr::include_graphics("images/logo.png")
 ```
 
@@ -317,6 +325,20 @@ The default commands allow to show the use of the hyphenation command:
 ```
 
 Other commands can be added as needed.
+Preprints may need double spacing and line numbers.
+To force double space between lines, add:
+
+```
+  \usepackage{setspace}
+  \doublespacing
+```
+
+To have line numbers in the left margin of the text:
+```
+  \usepackage{lineno}
+  \linenumbers
+```
+
 Warning:
 
 - Comments are not allowed

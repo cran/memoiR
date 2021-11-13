@@ -37,7 +37,7 @@ draft_memoir <- function(path, ...) {
 #' - `knit_all()` runs knit_template() on all templates of the package.
 #' The `output_format` argument selects the way templates are rendered:
 #' - articles may be rendered in HTML by [bookdown::html_document2], [bookdown::gitbook], [rmdformats::downcute] (and others, see the package **rmdformats**) and in PDF by [bookdown::pdf_book].
-#' - books may be rendered in HTML by [bookdown::gitbook] and in PDF by [bookdown::pdf_book].
+#' - books may be rendered in HTML by [bookdown::gitbook] or [bookdown::bs4_book] and in PDF by [bookdown::pdf_book].
 #' - slides may be rendered in  HTML by [bookdown::ioslides_presentation2], [bookdown::ioslides_presentation2] and in PDF by [bookdown::beamer_presentation2].
 #'
 #' These functions are mainly used for test and documentation purposes.
@@ -68,7 +68,8 @@ knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") 
   if (done)
     done <- knit_template("memoir", 
                           output_format=c("bookdown::pdf_book", 
-                                          "bookdown::gitbook"), 
+                                          "bookdown::gitbook",
+                                          "bookdown::bs4_book"), 
                           destination=destination, gallery=gallery)
   if (done)
     done <- knit_template("beamer_presentation", 
@@ -114,6 +115,7 @@ knit_template <- function(template, output_format, destination=usethis::proj_pat
     for (format in output_format) {
       if (format %in% c("bookdown::gitbook", 
                         "bookdown::html_document2", 
+                        "bookdown::bs4_book", 
                         "rmdformats::downcute", 
                         "bookdown::ioslides_presentation2", 
                         "bookdown::slidy_presentation2")) {
@@ -646,6 +648,8 @@ build_ghworkflow <- function() {
     '      - name: Install pandoc',
     '        uses: r-lib/actions/setup-pandoc@v1',
     '      - name: Install dependencies',
+    '        env:',
+    '          GITHUB_PAT: ${{ secrets.GH_PAT }}',
     '        run: |',
     '          options(pkgType = "binary")',
     '          options(install.packages.check.source = "no")',
