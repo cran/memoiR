@@ -1,3 +1,18 @@
+# memoiR 1.1-4
+
+## Bug Correction
+
+* In all templates, knitr `message` option was spelled `messages`. Corrected.
+
+## New features
+
+* `urlcolor: blue` in beamer presentations.
+
+## Improvements
+
+* r-lib/actions v2 in `build_ghworkflow()`.
+
+
 # memoiR 1.1-3
 
 ## Bug Correction
