@@ -118,7 +118,10 @@ $endif$
 % Full-width tables
 \usepackage{tabu}
 \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
-  
+
+% Prevent overfull lines
+\setlength{\emergencystretch}{3em}
+
 $if(preamble)$
 % User-adder preamble
 $preamble$
@@ -168,7 +171,9 @@ $abstract$
 
 \begin{document}
 
+$if(lang)$
 \selectlanguage{$lang$}
+$endif$
 
 \flushbottom % Makes all text pages the same height
 

@@ -1,3 +1,18 @@
+# memoiR 1.2-0
+
+## Improvements
+
+* full-width figures supported in memoirs.
+* bs4_book css added to memoir template to support *Summary* block style.
+* date format is localized by `build_ghworkflow()`.
+* distill format allowed for HTML articles.
+* better prevention of overfull lines in PDF articles.
+
+## Bug Correction
+
+* In article templates, check that `lang` is declared before selecting it.
+
+
 # memoiR 1.1-4
 
 ## Bug Correction

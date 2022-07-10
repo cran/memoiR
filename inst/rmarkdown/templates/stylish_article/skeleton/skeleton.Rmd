@@ -61,8 +61,11 @@ output:
       sharing:
         github: yes
   bookdown::html_document2:
+    base_format: distill::distill_article
     toc: yes
     toc_float: yes
+    code_folding: yes
+    highlight_downlit: yes    
   bookdown::word_document2: default
 ---
 
@@ -106,10 +109,11 @@ InstallPackages(Packages)
 
 # knitr options
 knitr::opts_chunk$set(
-  cache = FALSE,   # Cache chunk results
-  echo = TRUE,     # Show/Hide R chunks
-  warning = FALSE, # Show/Hide warnings
-  message = FALSE, # Show/Hide messages
+  cache =   FALSE,    # Cache chunk results
+  include = TRUE,     # Show/Hide chunks
+  echo =    TRUE,     # Show/Hide code
+  warning = FALSE,    # Show/Hide warnings
+  message = FALSE,    # Show/Hide messages
   # Figure alignment and size
   fig.align = 'center', out.width = '80%',
   # Graphic devices (ragg_png is better than standard png)
@@ -149,7 +153,7 @@ Its documentation is available at the RStudio website[^2].
 
 
 Markdown is extended by Bookdown[^3], which allows for book writing and more efficient syntax for articles.
-This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LateX compiles it into PDF.
+This document is made with Markdown in RStudio: knitr processes the Markdown code, passes it to Pandoc for transformation into LaTeX, finally LaTeX compiles it into PDF.
 
 [^3]: <https://bookdown.org/yihui/bookdown/>
 
@@ -256,11 +260,17 @@ A figure can use the full width of the page by adding the following options to t
 
 Existing figures are integrated into a piece of code by the `include_graphics` function, see figure \@ref(fig:logo).
 
+<aside>
 ```{r logo, fig.cap="A figure from a file", echo=FALSE, out.width='60%'}
 knitr::include_graphics("images/logo.png")
 ```
+</aside>
 
 Systematically place these files in the `images` folder for the automation of GitHub pages.
+
+In the HTML output, figure \@ref(fig:logo) is located in the margin of the document thanks to the advanced formatting possibilities of the **distill**[^6] package. 
+
+[^6]: https://rstudio.github.io/distill/
 
 
 ## Captions
@@ -292,7 +302,7 @@ Leave an empty line before and after the list, but not between its items.
 
 ## Math
 
-Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ or isolated like $$e^{i \pi} = -1$$.
+Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ or isolated like $$e^{i \pi} = -1.$$
 
 They can be numbered, see equation \@ref(eq:disk), using the `equation` environment:
 
@@ -310,9 +320,7 @@ For equations, the label is added manually by the code `(\#eq:xxx)` before the e
 
 Sections can be tagged by ending their title with `{#yyy}`.
 
-Bookmarks can also be placed freely in the text with the command `(ref:zzz)`.
-
-In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
+In all cases, the call to the reference is made by the command `\@ref()`.
 
 
 ## Bibliography
@@ -352,7 +360,7 @@ The default commands allow to show the use of the hyphenation command:
 Other commands can be added as needed.
 Warning:
 
-- Comments are not allowed
+- Comments are not allowed.
 - Complex commands (e.g. `\renewenvironment`) must be entered on a single line otherwise they will be destroyed by knitr at the first knitting in HTML.
 
 

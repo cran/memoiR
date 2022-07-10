@@ -63,7 +63,8 @@ knit_all <- function(destination=usethis::proj_path("docs"), gallery="gallery") 
                         destination=destination, gallery=gallery)
   if (done)
     done <- knit_template("stylish_article", 
-                          output_format=c("bookdown::pdf_book"), 
+                          output_format=c("bookdown::pdf_book", 
+                                          "bookdown::html_document2"), 
                           destination=destination, gallery=gallery)
   if (done)
     done <- knit_template("memoir", 
@@ -653,7 +654,7 @@ build_ghworkflow <- function() {
     '        run: |',
     '          options(pkgType = "binary")',
     '          options(install.packages.check.source = "no")',
-    '          install.packages(c("memoiR", "rmdformats", "tinytex"))',
+    '          install.packages(c("distill", "downlit", "memoiR", "rmdformats", "tinytex"))',
     '          tinytex::install_tinytex()')
   
   # Read languages in header
@@ -696,10 +697,23 @@ build_ghworkflow <- function() {
   } else {
     lines <- c(lines,
     '      - name: Render Rmarkdown files',
-    '        run: |',
-    '          RMD_PATH=($(ls | grep "[.]Rmd$"))',
-    '          Rscript -e \'for (file in commandArgs(TRUE)) rmarkdown::render(file, "all")\' ${RMD_PATH[*]}',
-    '          Rscript -e \'memoiR::build_githubpages()\''
+    '        run: |'
+    )
+    if (!is.null(langs)) {
+      # Set the main language for date format
+      lines <- c(
+        lines,
+        paste0(
+    '          Sys.setlocale("LC_TIME", "',
+          gsub("-", "_", langs[1]),
+          '")'
+          )
+        )
+    }
+    lines <- c(lines,
+    '          lapply(list.files(pattern="*.Rmd"), function(file) rmarkdown::render(file, "all"))',
+    '          memoiR::build_githubpages()',
+    '        shell: Rscript {0}'
     )
   }
   
@@ -727,7 +741,8 @@ build_ghworkflow <- function() {
     '          GITHUB_TOKEN: ${{ secrets.GH_PAT }}',
     '        with:',
     '          email: ${{ secrets.EMAIL }}',
-    '          build_dir: docs')
+    '          build_dir: docs'
+    )
   
   # Jekyll site for simple documents
   if (is_memoir) {

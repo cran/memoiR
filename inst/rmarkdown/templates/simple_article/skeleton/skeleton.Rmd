@@ -83,10 +83,11 @@ InstallPackages(Packages)
 
 # knitr options
 knitr::opts_chunk$set(
-  cache = FALSE,   # Cache chunk results
-  echo = TRUE,     # Show/Hide R chunks
-  warning = FALSE, # Show/Hide warnings
-  message = FALSE, # Show/Hide messages
+  cache =   FALSE,    # Cache chunk results
+  include = TRUE,     # Show/Hide chunks
+  echo =    TRUE,     # Show/Hide code
+  warning = FALSE,    # Show/Hide warnings
+  message = FALSE,    # Show/Hide messages
   # Figure alignment and size
   fig.align = 'center', out.width = '80%',
   # Graphic devices (ragg_png is better than standard png)
@@ -267,7 +268,7 @@ Leave an empty line before and after the list, but not between its items.
 
 ## Math
 
-Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ or isolated like $$e^{i \pi} = -1$$.
+Equations in LaTeX format can be inserted in line, like $A=\pi r^2$ or isolated like $$e^{i \pi} = -1.$$
 
 They can be numbered, see equation \@ref(eq:disk), using the `equation` environment:
 
@@ -285,9 +286,7 @@ For equations, the label is added manually by the code `(\#eq:xxx)` before the e
 
 Sections can be tagged by ending their title with `{#yyy}`.
 
-Bookmarks can also be placed freely in the text with the command `(ref:zzz)`.
-
-In all cases, the call to the reference is made by the command `\@ref(ref:zzz)`.
+In all cases, the call to the reference is made by the command `\@ref()`.
 
 
 ## Bibliography
