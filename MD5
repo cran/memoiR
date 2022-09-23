@@ -1,7 +1,7 @@
-ac51742de8d6a16fdb4511cd8f78c7b0 *DESCRIPTION
+8859bb90882c02523ede074bb986198b *DESCRIPTION
 eba6fead346249b35387ef39d51f1493 *NAMESPACE
-8eefe1fda0cfa67b0283be4d0c0d88aa *NEWS.md
-20a993d355587cf64dcf65c767166009 *R/memoiR.R
+818e357eafbfddd07b147d2eb31cf9f4 *NEWS.md
+406d7694418db7b8c0c1ca788939311a *R/memoiR.R
 065a407adf1040a387278e05fdfe0bf3 *README.md
 3107ab6966b0967499dcd9929a1ca725 *build/vignette.rds
 3ccba34c6eea1eb07f1a6234bb9b78c8 *inst/doc/memoiR.Rmd
@@ -40,7 +40,7 @@ e5407428a431286b9013c8cd965af882 *inst/rmarkdown/templates/simple_article/skelet
 bc6a3c15b31a8ca72f31c2aeb99aaf1a *inst/rmarkdown/templates/simple_article/skeleton/images/logo.png
 23e992f12426c07b9d4bc2cd3d95beee *inst/rmarkdown/templates/simple_article/skeleton/latex/template.tex
 7cce80c3edf323b12e97c8dc1adb2194 *inst/rmarkdown/templates/simple_article/skeleton/references.bib
-6da4cbc1aa8b55981e3b2d0ff15cc829 *inst/rmarkdown/templates/simple_article/skeleton/skeleton.Rmd
+ebac06865d3559b2ef6f475c44e3a7fe *inst/rmarkdown/templates/simple_article/skeleton/skeleton.Rmd
 1953b4a31f2dbe2b9909774460830f0e *inst/rmarkdown/templates/simple_article/skeleton/style.css
 5b9d35b052bcebd2189cbf1065dc76ba *inst/rmarkdown/templates/simple_article/template.yaml
 976cc5b1ec4172e55b5bf4252c433cac *inst/rmarkdown/templates/stylish_article/skeleton/chicago.bst
@@ -49,7 +49,7 @@ bc6a3c15b31a8ca72f31c2aeb99aaf1a *inst/rmarkdown/templates/stylish_article/skele
 ecffac4bab13190c43f937ea5509e33f *inst/rmarkdown/templates/stylish_article/skeleton/latex/stylish_article.cls
 e9dd513d418d4d7f993e57063304eac9 *inst/rmarkdown/templates/stylish_article/skeleton/latex/template.tex
 7cce80c3edf323b12e97c8dc1adb2194 *inst/rmarkdown/templates/stylish_article/skeleton/references.bib
-53f814cc44422bcd7c45f0f4687caf72 *inst/rmarkdown/templates/stylish_article/skeleton/skeleton.Rmd
+a9cdd53d45f398ce02f34607334994b1 *inst/rmarkdown/templates/stylish_article/skeleton/skeleton.Rmd
 1953b4a31f2dbe2b9909774460830f0e *inst/rmarkdown/templates/stylish_article/skeleton/style.css
 65fa543d7f6cbf2792a6938ecc4a9d34 *inst/rmarkdown/templates/stylish_article/template.yaml
 91b488cde802d2e6304241daef2d64de *inst/rstudio/templates/project/feather.png
