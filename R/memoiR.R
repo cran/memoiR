@@ -1,11 +1,5 @@
-#' Package memoiR
-#'
-#' R Bookdown templates to publish documents,
-#' especially relying on the memoir LaTeX package
-#'
-#' @name memoiR
-#' @docType package
-NULL
+#' @keywords internal 
+"_PACKAGE"
 
 
 #' RStudio Project
@@ -656,7 +650,7 @@ build_ghworkflow <- function() {
     '    runs-on: macOS-latest',
     '    steps:',
     '      - name: Checkout repo',
-    '        uses: actions/checkout@v2',
+    '        uses: actions/checkout@v3',
     '      - name: Setup R',
     '        uses: r-lib/actions/setup-r@v2',
     '      - name: Install pandoc',
@@ -733,7 +727,7 @@ build_ghworkflow <- function() {
   # Publish
   lines <- c(lines,
     '      - name: Upload artifact',
-    '        uses: actions/upload-artifact@v1',
+    '        uses: actions/upload-artifact@v3',
     '        with:',
     '          name: ghpages',
     '          path: docs',
@@ -742,9 +736,9 @@ build_ghworkflow <- function() {
     '    needs: render',
     '    steps:',
     '      - name: Checkout',
-    '        uses: actions/checkout@v2',
+    '        uses: actions/checkout@v3',
     '      - name: Download artifact',
-    '        uses: actions/download-artifact@v1',
+    '        uses: actions/download-artifact@v3',
     '        with:',
     '          name: ghpages',
     '          path: docs',

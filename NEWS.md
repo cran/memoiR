@@ -1,3 +1,16 @@
+# memoiR 1.2-4
+
+## External changes
+
+* codecov.io URL in `README.md`.
+* Github actions versions updated.
+* Pending issue in [kableExtra](https://github.com/haozhu233/kableExtra/issues/750).
+
+## Bug Correction
+
+* Updated package help file following roxygen2 v.7 [breaking change](https://github.com/r-lib/roxygen2/issues/1491).
+
+
 # memoiR 1.2-2
 
 ## Improvements
