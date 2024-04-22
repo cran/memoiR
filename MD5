@@ -1,11 +1,11 @@
-a14ca2eafeb7ed59e5adc07cf58b5d48 *DESCRIPTION
+aa3464a650e3d59193619cc5bc1001ec *DESCRIPTION
 eba6fead346249b35387ef39d51f1493 *NAMESPACE
-2615771918dfe02030fdd1841992f5c0 *NEWS.md
-29adfc7d0d65f53925a984bcac24ec6f *R/memoiR.R
+3656e7b33c80a4aa891b2e207794c12c *NEWS.md
+8c49e87e829a3defad5b01f13bde6a9b *R/memoiR.R
 ec4bcc7f782626556816ad4822ffe66c *README.md
-592afee8a69055be17e0ddca8f260ae8 *build/vignette.rds
-3ccba34c6eea1eb07f1a6234bb9b78c8 *inst/doc/memoiR.Rmd
-815ec044232d36635792ded84d6fd878 *inst/doc/memoiR.html
+47cbe7c80f07020a0ecf08e8f6c2b74a *build/vignette.rds
+dffe5c1be3326b1c322506955300a9d4 *inst/doc/memoiR.Rmd
+8b4db87ddb4fb7c36f294c1e21ee93de *inst/doc/memoiR.html
 976cc5b1ec4172e55b5bf4252c433cac *inst/rmarkdown/templates/beamer_presentation/skeleton/chicago.bst
 e5407428a431286b9013c8cd965af882 *inst/rmarkdown/templates/beamer_presentation/skeleton/images/logo.pdf
 bc6a3c15b31a8ca72f31c2aeb99aaf1a *inst/rmarkdown/templates/beamer_presentation/skeleton/images/logo.png
@@ -14,7 +14,7 @@ c1f34da1c4903fd12efa1f1c3c6a89a0 *inst/rmarkdown/templates/beamer_presentation/s
 a6f3ff10ce73f60a98afe3f03f99f3ea *inst/rmarkdown/templates/beamer_presentation/skeleton/skeleton.Rmd
 ecba5e4b4e00979fe465ab7dd68f8cd1 *inst/rmarkdown/templates/beamer_presentation/template.yaml
 39a47a895b9a8137250edd3a0444eb4d *inst/rmarkdown/templates/memoir/skeleton/81-getting_started.Rmd
-454a110110d75d32fff02dbf8e9df823 *inst/rmarkdown/templates/memoir/skeleton/82-syntax.Rmd
+3f09c56e93e2bcaa058599dfce3a89fd *inst/rmarkdown/templates/memoir/skeleton/82-syntax.Rmd
 92bf62b63275fe9ec88352d785a84b24 *inst/rmarkdown/templates/memoir/skeleton/99-references.Rmd
 3c34afdc3adf82d2448f12715a255122 *inst/rmarkdown/templates/memoir/skeleton/LICENSE
 cc5936e63f3a6e05a30e98e72f39baf7 *inst/rmarkdown/templates/memoir/skeleton/_bookdown.yml
@@ -40,7 +40,7 @@ e5407428a431286b9013c8cd965af882 *inst/rmarkdown/templates/simple_article/skelet
 bc6a3c15b31a8ca72f31c2aeb99aaf1a *inst/rmarkdown/templates/simple_article/skeleton/images/logo.png
 23e992f12426c07b9d4bc2cd3d95beee *inst/rmarkdown/templates/simple_article/skeleton/latex/template.tex
 7cce80c3edf323b12e97c8dc1adb2194 *inst/rmarkdown/templates/simple_article/skeleton/references.bib
-c203e971c0e7ecff94cf0c4e877b9d3f *inst/rmarkdown/templates/simple_article/skeleton/skeleton.Rmd
+e9ab720525b231fd3412a2261c8d75ef *inst/rmarkdown/templates/simple_article/skeleton/skeleton.Rmd
 1953b4a31f2dbe2b9909774460830f0e *inst/rmarkdown/templates/simple_article/skeleton/style.css
 5b9d35b052bcebd2189cbf1065dc76ba *inst/rmarkdown/templates/simple_article/template.yaml
 976cc5b1ec4172e55b5bf4252c433cac *inst/rmarkdown/templates/stylish_article/skeleton/chicago.bst
@@ -49,7 +49,7 @@ bc6a3c15b31a8ca72f31c2aeb99aaf1a *inst/rmarkdown/templates/stylish_article/skele
 ecffac4bab13190c43f937ea5509e33f *inst/rmarkdown/templates/stylish_article/skeleton/latex/stylish_article.cls
 e9dd513d418d4d7f993e57063304eac9 *inst/rmarkdown/templates/stylish_article/skeleton/latex/template.tex
 7cce80c3edf323b12e97c8dc1adb2194 *inst/rmarkdown/templates/stylish_article/skeleton/references.bib
-a02e84f9f41f3a7ec74bb7e86ec58ec4 *inst/rmarkdown/templates/stylish_article/skeleton/skeleton.Rmd
+e682b9803691a464991d107f4f0ae97b *inst/rmarkdown/templates/stylish_article/skeleton/skeleton.Rmd
 1953b4a31f2dbe2b9909774460830f0e *inst/rmarkdown/templates/stylish_article/skeleton/style.css
 65fa543d7f6cbf2792a6938ecc4a9d34 *inst/rmarkdown/templates/stylish_article/template.yaml
 91b488cde802d2e6304241daef2d64de *inst/rstudio/templates/project/feather.png
@@ -57,10 +57,10 @@ b05b115660e34e9efecb292692cb1db3 *inst/rstudio/templates/project/memoir.dcf
 d1c808a7e49965429d3c3ef942fa3ef6 *man/Knit.Rd
 e7334cc4520e8d9fb8186b4308f22943 *man/add_font.Rd
 7b0fc1a070142044305a111040887f5e *man/add_hyphen.Rd
-1fe1d9c9e5dfdfde8fa9c65bb2cd7434 *man/build_ghworkflow.Rd
-93a741ac12c27a77e6144728bd3f986a *man/build_githubpages.Rd
-05ae5c26cadd17a34aed435092106c46 *man/build_gitignore.Rd
-5f0d892475b5edf24b2346a8177c5731 *man/build_readme.Rd
+6c03c5988287b462a8d483d10c1c365c *man/build_ghworkflow.Rd
+e77b11687a0fb3645f928d1110e86364 *man/build_githubpages.Rd
+47351748356286d8ca5385cec01c5c28 *man/build_gitignore.Rd
+b244d810a0232906672eb9e4269553d4 *man/build_readme.Rd
 7840dcb846dc10d8a848c4d8a82552c5 *man/draft_memoir.Rd
 bc6a3c15b31a8ca72f31c2aeb99aaf1a *man/figures/logo.png
 50becb9af5292f8bf97118a555280290 *man/figures/logo.svg
@@ -68,4 +68,4 @@ bc6a3c15b31a8ca72f31c2aeb99aaf1a *man/figures/logo.png
 1b68f1d6c681a6b87f6e2019e596355b *tests/testthat.R
 45f2f806a28bd8ce00f4185ebe02750a *tests/testthat/test_build.R
 685a57f6dc1d860efb675daa599e3d72 *tests/testthat/test_knit.R
-3ccba34c6eea1eb07f1a6234bb9b78c8 *vignettes/memoiR.Rmd
+dffe5c1be3326b1c322506955300a9d4 *vignettes/memoiR.Rmd

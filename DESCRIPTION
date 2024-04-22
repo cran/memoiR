@@ -1,6 +1,6 @@
 Package: memoiR
 Title: R Markdown and Bookdown Templates to Publish Documents
-Version: 1.2-7
+Version: 1.2-9
 URL: https://ericmarcon.github.io/memoiR/,
         https://github.com/EricMarcon/memoiR
 BugReports: https://github.com/EricMarcon/memoiR/issues
@@ -21,8 +21,8 @@ VignetteBuilder: knitr
 Imports: bookdown, distill, rmarkdown, rmdformats, usethis
 Suggests: knitr, pkgdown, testthat
 NeedsCompilation: no
-Packaged: 2024-02-26 19:31:41 UTC; emarc
+Packaged: 2024-04-22 08:50:40 UTC; emarc
 Author: Eric Marcon [aut, cre] (<https://orcid.org/0000-0002-5249-321X>)
 Maintainer: Eric Marcon <eric.marcon@agroparistech.fr>
 Repository: CRAN
-Date/Publication: 2024-02-26 20:50:02 UTC
+Date/Publication: 2024-04-22 09:12:42 UTC
