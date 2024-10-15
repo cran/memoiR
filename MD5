@@ -1,9 +1,9 @@
-aa3464a650e3d59193619cc5bc1001ec *DESCRIPTION
+6cc13f9b919870a29a8c67d233210945 *DESCRIPTION
 eba6fead346249b35387ef39d51f1493 *NAMESPACE
-3656e7b33c80a4aa891b2e207794c12c *NEWS.md
-8c49e87e829a3defad5b01f13bde6a9b *R/memoiR.R
-ec4bcc7f782626556816ad4822ffe66c *README.md
-47cbe7c80f07020a0ecf08e8f6c2b74a *build/vignette.rds
+15d7bfa5c52afcf99aaa781669dcd3e3 *NEWS.md
+3569532344b232aee7d264410e79791f *R/memoiR.R
+c2fd385a410f76b66c1b88c31ef9faa5 *README.md
+5fa79104c345bbfc570b051cd8a4ecb6 *build/vignette.rds
 dffe5c1be3326b1c322506955300a9d4 *inst/doc/memoiR.Rmd
 8b4db87ddb4fb7c36f294c1e21ee93de *inst/doc/memoiR.html
 976cc5b1ec4172e55b5bf4252c433cac *inst/rmarkdown/templates/beamer_presentation/skeleton/chicago.bst
@@ -64,7 +64,7 @@ b244d810a0232906672eb9e4269553d4 *man/build_readme.Rd
 7840dcb846dc10d8a848c4d8a82552c5 *man/draft_memoir.Rd
 bc6a3c15b31a8ca72f31c2aeb99aaf1a *man/figures/logo.png
 50becb9af5292f8bf97118a555280290 *man/figures/logo.svg
-0883d1304606bf9ce373ee4729a36023 *man/memoiR-package.Rd
+c61571cbc0b2ae1f6f8369225ea69d34 *man/memoiR-package.Rd
 1b68f1d6c681a6b87f6e2019e596355b *tests/testthat.R
 45f2f806a28bd8ce00f4185ebe02750a *tests/testthat/test_build.R
 685a57f6dc1d860efb675daa599e3d72 *tests/testthat/test_knit.R
