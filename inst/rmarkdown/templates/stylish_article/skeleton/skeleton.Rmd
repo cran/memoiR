@@ -24,7 +24,19 @@ corrauthor:
     url: https://www.company.com
 abstract: >
   Summary of the article.
+  Mandatory.
+  
+  
+  Use double line feed for a new paragraph.
+# Below the abstract
 keywords: [keyword1, keyword2, etc]
+# For economics journals
+JEL: [Code1, Code2, etc, MayBeDeleted]
+acknowledgements: >
+  Acknowledgements. 
+  
+  
+  May be deleted.
 # First Page Header
 journalinfo: "Publication reference"
 archive: "DOI: xxx/xx"
@@ -36,6 +48,8 @@ github-repo: GitHubID/Repository
 lang: en-US
 otherlangs: [fr-FR,it]
 keywordlabel: Keywords
+JELlabel: JEL
+acknowledgementslabel: Acknowledgements
 corrauthorlabel: Corresponding author
 # Bibliography
 bibliography: references.bib
@@ -77,31 +91,27 @@ output:
 #| include: false
 ### Utilities. Do not modify.
 # Installation of packages if necessary
-InstallPackages <- function(Packages) {
-  InstallPackage <- function(Package) {
-    if (!Package %in% installed.packages()[, 1]) {
-      install.packages(Package, repos = "https://cran.rstudio.com/")
+install_packages <- function(packages) {
+  install_package <- function(package) {
+    if (!package %in% installed.packages()[, 1]) {
+      install.packages(package, repos = "https://cran.rstudio.com/")
     }
   }
-  invisible(sapply(Packages, InstallPackage))
+  invisible(sapply(packages, install_package))
 }
 
 # Basic packages
-InstallPackages(c("bookdown", "formatR", "kableExtra", "ragg"))
-
-# kableExtra must be loaded 
-if (knitr::opts_knit$get("rmarkdown.pandoc.to") == "docx") {
-  # Word output (https://stackoverflow.com/questions/35144130/in-knitr-how-can-i-test-for-if-the-output-will-be-pdf-or-word)
-  # Do not use autoformat (https://github.com/haozhu233/kableExtra/issues/308)
-  options(kableExtra.auto_format = FALSE)
-}
-library("kableExtra")
+install_packages(c("bookdown", "formatR", "kableExtra", "ragg"))
 
 # Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
 def.chunk.hook  <- knitr::knit_hooks$get("chunk")
 knitr::knit_hooks$set(chunk = function(x, options) {
   x <- def.chunk.hook(x, options)
-  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+  ifelse(
+    options$size != "normalsize", 
+    paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), 
+    x
+  )
 })
 ```
 
@@ -110,9 +120,9 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 #| include: false
 ### Customized options for this document
 # Add necessary packages here
-Packages <- c("tidyverse")
+packages <- c("tidyverse")
 # Install them
-InstallPackages(Packages)
+install_packages(packages)
 
 # knitr options
 knitr::opts_chunk$set(
@@ -150,7 +160,7 @@ set.seed(973)
 This template allows writing articles in Markdown[^1] format.
 It directly produces well-formatted articles for self-archiving (deposit on HAL for example) or in other formats, for example HTML.
 
-[^1]: <https://ericmarcon.github.io/travailleR/chap-rediger.html>
+[^1]: <https://ericmarcon.github.io/WorkingWithR/chap-rediger.html>
 
 
 # R Markdown{#markdown}
@@ -224,7 +234,7 @@ names(iris) <- c("Sepal length", "Width", "Petal length", "Width", "Species")
 kableExtra::kbl(
   head(iris), 
   caption = "Table created by R", longtable = TRUE, booktabs = TRUE
-  ) %>%
+  ) |>
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
@@ -232,39 +242,45 @@ The caption is specified by the `caption` argument and referencing is possible b
 Always use the `booktabs = TRUE` argument so that the thickness of the separator lines is optimal in LaTeX.
 The `bootstrap_options = "striped"` option provides more readable tables in HTML.
 
-(ref:Paracou) Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.
+(ref:Paracou) Disturbance intensity of the 4 plot treatments in Paracou.
 ```{r}
 #| label: Paracou
 #| echo: false
 #| warning: false
-Intervention <- data.frame(
+logging <- data.frame(
   Treatment = c("Control", "T1", "T2", "T3"),
-  Timber = c("", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
-           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
-  Thinning = c("", 
-             "", 
-             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
-             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
-  Fuelwood = c("", 
-             "", 
-             "", 
-             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
+  Timber = c(
+    "", 
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
+    "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"
+  ),
+  Thinning = c(
+    "", 
+    "", 
+    "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
+    "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "
+  ),
+  Fuelwood = c(
+    "", 
+    "", 
+    "", 
+    "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"
+  ),
   AGBLost = c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
 )
-names(Intervention)[5] <- "\\%AGB lost"
+names(logging)[5] <- "\\%AGB lost"
 kableExtra::kbl(
-  Intervention, 
+  logging, 
   caption = "(ref:Paracou)", 
   longtable = FALSE, 
   booktabs = TRUE, 
-  escape = FALSE) %>%
+  escape = FALSE) |>
   kableExtra::kable_styling(
     bootstrap_options = "striped", 
     full_width = TRUE
-  ) %>% 
-  row_spec(row = 0, bold = TRUE)
+  ) |> 
+  kableExtra::row_spec(row = 0, bold = TRUE)
 ```
 
 
@@ -277,7 +293,7 @@ It must be `TRUE` for correct formatting of two-column tables, i.e. with `longta
 
 The content of table cells can be formatted following the Markdown syntax, with some limits due to  _kableExtra_: the argument `format="markdown"` is necessary in `kbl()` or LaTeX output will ignore formatting, but this is not compatible with `full_width = TRUE` in `kable_styling()`.
 See _kableExtra_'s documentation to format rows or columns globally without using Markdown (e.g. function  `row_spec()`.
-The header of \@ref(tab:Paracou)) is set to bold this way.
+The header of table \@ref(tab:Paracou) is set to bold this way.
 
 
 ## Figures
