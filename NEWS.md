@@ -1,3 +1,12 @@
+# memoiR 1.3-1
+
+## Improvements
+
+* cleaned up the code.
+* allowed all authors on the same line in Stylish Article PDF.
+* allowed ORCID link in Stylish Article PDF.
+
+
 # memoiR 1.3-0
 
 ## Improvements
@@ -6,6 +15,7 @@
 * corrected the Stylish Article template (Thanks to Florence Puech, #5).
 * added JEL codes and acknowledgements to Stylish Article template.
 * added a vignette about tables.
+
 
 # memoiR 1.2-10
 

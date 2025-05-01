@@ -1,9 +1,9 @@
-2597801dfa0a3bfbe2eec21dca301847 *DESCRIPTION
+648b583df5f9f31dfdc8efb6368d792b *DESCRIPTION
 eba6fead346249b35387ef39d51f1493 *NAMESPACE
-5cd33f348406e8d79c0bce199b41a9ce *NEWS.md
-240bc01d0c9dbcc92f3c6c68577fa7e2 *R/memoiR.R
-c2fd385a410f76b66c1b88c31ef9faa5 *README.md
-8572789ab9269eb8af377ffe2e0fa781 *build/vignette.rds
+f8609911d1e38e1a76ad67e601a63ee5 *NEWS.md
+ece2ce0dadccad692fb63727e925577d *R/memoiR.R
+16752b1a4381e916d0c397ab287c2cfa *README.md
+98874a58bd7b0b2743e09534ff02dea0 *build/vignette.rds
 c4ae69c34234a70c48fcc9510b278d0d *inst/doc/memoiR.Rmd
 b6b2a18745c1ba526e66366b50e95919 *inst/doc/memoiR.html
 976cc5b1ec4172e55b5bf4252c433cac *inst/rmarkdown/templates/beamer_presentation/skeleton/chicago.bst
@@ -25,7 +25,7 @@ cc5936e63f3a6e05a30e98e72f39baf7 *inst/rmarkdown/templates/memoir/skeleton/_book
 e5407428a431286b9013c8cd965af882 *inst/rmarkdown/templates/memoir/skeleton/images/logo.pdf
 bc6a3c15b31a8ca72f31c2aeb99aaf1a *inst/rmarkdown/templates/memoir/skeleton/images/logo.png
 9f518708cf658fa3dac25d4fe4d08932 *inst/rmarkdown/templates/memoir/skeleton/images/trombone.png
-5c94774360490052202b3f2b94aeb94f *inst/rmarkdown/templates/memoir/skeleton/index.Rmd
+b6de51495968ac3598344525142fbc95 *inst/rmarkdown/templates/memoir/skeleton/index.Rmd
 d41d8cd98f00b204e9800998ecf8427e *inst/rmarkdown/templates/memoir/skeleton/latex/after_body.tex
 d41d8cd98f00b204e9800998ecf8427e *inst/rmarkdown/templates/memoir/skeleton/latex/before_body.tex
 614a1cd92a7f5093f5f6af74cab3d6f3 *inst/rmarkdown/templates/memoir/skeleton/latex/preamble.tex
@@ -47,9 +47,9 @@ e9272a2af8277ce8cec959df141c934d *inst/rmarkdown/templates/simple_article/skelet
 e5407428a431286b9013c8cd965af882 *inst/rmarkdown/templates/stylish_article/skeleton/images/logo.pdf
 bc6a3c15b31a8ca72f31c2aeb99aaf1a *inst/rmarkdown/templates/stylish_article/skeleton/images/logo.png
 6fdaf687e1a3fe788f638e54eddb2230 *inst/rmarkdown/templates/stylish_article/skeleton/latex/stylish_article.cls
-53e44f26e407f9d53aa795caa0c43d60 *inst/rmarkdown/templates/stylish_article/skeleton/latex/template.tex
+ff96d0c0c91c30329855af8a63e27a50 *inst/rmarkdown/templates/stylish_article/skeleton/latex/template.tex
 7cce80c3edf323b12e97c8dc1adb2194 *inst/rmarkdown/templates/stylish_article/skeleton/references.bib
-3a8c0687520a87874b70913c63442741 *inst/rmarkdown/templates/stylish_article/skeleton/skeleton.Rmd
+14d45a4b80434b8e90244782c24a591e *inst/rmarkdown/templates/stylish_article/skeleton/skeleton.Rmd
 1953b4a31f2dbe2b9909774460830f0e *inst/rmarkdown/templates/stylish_article/skeleton/style.css
 65fa543d7f6cbf2792a6938ecc4a9d34 *inst/rmarkdown/templates/stylish_article/template.yaml
 91b488cde802d2e6304241daef2d64de *inst/rstudio/templates/project/feather.png
@@ -58,7 +58,7 @@ d1c808a7e49965429d3c3ef942fa3ef6 *man/Knit.Rd
 e7334cc4520e8d9fb8186b4308f22943 *man/add_font.Rd
 7b0fc1a070142044305a111040887f5e *man/add_hyphen.Rd
 6c03c5988287b462a8d483d10c1c365c *man/build_ghworkflow.Rd
-e77b11687a0fb3645f928d1110e86364 *man/build_githubpages.Rd
+09a4205d29ad735c6289a9b80efdd383 *man/build_githubpages.Rd
 47351748356286d8ca5385cec01c5c28 *man/build_gitignore.Rd
 b244d810a0232906672eb9e4269553d4 *man/build_readme.Rd
 7840dcb846dc10d8a848c4d8a82552c5 *man/draft_memoir.Rd

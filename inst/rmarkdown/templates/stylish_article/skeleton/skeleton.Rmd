@@ -3,6 +3,7 @@ title: "Title of the Article"
 author:
   - name: "First Author's name"
     authsuperscript: 1*
+    orcid: 0000-0000-0000-0000
   - name: "Second Author's name"
     authsuperscript: 2
 affiliation:
@@ -48,9 +49,12 @@ github-repo: GitHubID/Repository
 lang: en-US
 otherlangs: [fr-FR,it]
 keywordlabel: Keywords
+# Labels
 JELlabel: JEL
 acknowledgementslabel: Acknowledgements
 corrauthorlabel: Corresponding author
+# Author separator: \par (no quote) for one author per line, "," (between quotes) else
+authorseparator: \par
 # Bibliography
 bibliography: references.bib
 biblio-style: chicago
